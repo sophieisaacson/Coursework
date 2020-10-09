@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /* ------------------------------------------------------------------------------
  This class serves up the static HTML, CSS, JavaScript and images to the client.
- You shouldn't need to change anything unless you are adding other file types.
+  You shouldn't need to change anything unless you are adding other file types.
  ------------------------------------------------------------------------------ */
 @Path("client/")
 public class Client {
