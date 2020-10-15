@@ -36,18 +36,18 @@ public class Users{
         }
     }
     @GET
-    @Path("get/{UserID}")
-    public String GetUser(@PathParam("UserID")Integer UserID) {
-        System.out.println("Invoked Users.GetUser() with UserID " + UserID);
+    @Path("get/{Username}")
+    public String GetUser(@PathParam("Username")String Username) {
+        System.out.println("Invoked Users.GetUser() with Username " + Username);
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT Username FROM Users WHERE UserID = ?");
-            ps.setInt(1, UserID);
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Password FROM Users WHERE Username = ?");
+            ps.setString(1, Username);
             ResultSet results = ps.executeQuery();
             JSONObject row = new JSONObject();
             if (results.next()==true) {
-                row.put("UserID", UserID);
-                row.put("Username", results.getString(1));
+                row.put("Username", Username);
+                row.put("Password", results.getString(1));
                 response.add(row);
             }
             return response.toString();
@@ -58,12 +58,13 @@ public class Users{
     }
     @POST
     @Path("add")
-    public String UsersAdd(@FormDataParam("Username")String Username, @FormDataParam("Password")String Password) {
+    public String UsersAdd(@FormDataParam("Username")String Username, @FormDataParam("Password")String Password, @FormDataParam("Email")String Email) {
         System.out.println("Invoked Users.UsersAdd()");
         try {
-            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Users (Username, Password) VALUES (?,?)");
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Users (Username, Password, Email) VALUES (?,?,?)");
             ps.setString(1, Username);
             ps.setString(2, Password);
+            ps.setString(3, Email);
             ps.execute();
             return "{\"OK\": \"Added User.\"}";
         } catch (Exception exception) {
