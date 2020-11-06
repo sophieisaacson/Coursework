@@ -4,23 +4,17 @@
     <meta charset="UTF-8">
     <title>Organistic</title>
     <script src="/client/js/login.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
-<form id="userDetails">
-    Username: <input type="text" id="Username">
-    Password: <input type="text" name="Password">
+<h1>Organistic</h1>
+<form id="LoginForm">
+    <input type="text" name="Username" id="Username" >
+    <input type="password" name="Password" id="Password">
 </form>
-<button onclick='getUser();'>Log in</button>
-<div id="Log in"></div>
-<br>
 
-<form id="InputUserDetails">
-    Username: <input type="text" name="Username">
-    Password: <input type="text" name="Password">
-    Email: <input type="text" name="Email">
-</form>
-<button onclick='addUser();'>Create Account</button>
+<button class="button" onclick='UsersLogin();'>Log in</button>  <!--UsersLogin()in users.js-->
+
 </body>
 </html>

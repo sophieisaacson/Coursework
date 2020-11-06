@@ -1,0 +1,20 @@
+input{
+    border-radius: 10px;
+    background: lightgrey;
+    border: 2px solid black;
+    padding: 20px;
+    width: 150px;
+    height: 10px;
+}
+body{
+    background-color: gainsboro;
+}
+h1{
+    font-family: "Courier New";
+    color: #F08080;
+    text-align: left;
+}
+button{
+    text-align: center;
+    font-family: "Courier New";
+}
