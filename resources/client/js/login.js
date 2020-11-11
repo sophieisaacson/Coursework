@@ -1,4 +1,11 @@
 "use strict";
+
+var modal = document.getElementById('signup');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 function UsersLogin() {
     //debugger;
     console.log("Invoked UsersLogin() ");
@@ -81,7 +88,7 @@ function getUser() {
     });
 }
 
-function addUser() {
+function NewAccount() {
     console.log("Invoked AddUser()");
     const formData = new FormData(document.getElementById('InputUserDetails'));
     let url = "/users/add";
@@ -94,7 +101,7 @@ function addUser() {
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
-            window.open("/client/home.html", "_self");   //URL replaces the current page.  Create a new html file
-        }                                                  //in the client folder called welcome.html
+            window.open("/client/home.html", "_self");
+        }
     });
 }

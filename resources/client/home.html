@@ -5,9 +5,16 @@
     <title>Organistic</title>
     <script src="/client/js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
-<h1>Organistic</h1>
-<button onclick='logout();'>LOGOUT</button>
+    <h1>Organistic</h1>
+    <div id="headerline"></div>
+    <button class="usernamebutton" onclick=window.open("admin.html","_self")>Username</button>
+    <button class=logoutbutton onclick='logout();'>LOGOUT</button>
+    <button class=todobutton onclick=window.open("todo.html","_self")>To Do List</button>
+    <button class=dailybutton onclick=window.open("daily.html","_self")>Daily Calendar</button>
+    <button class=weeklybutton onclick=window.open("weekly.html","_self")>Weekly Calendar</button>
+    <button class=monthlybutton onclick=window.open("monthly.html","_self")>Monthly Calendar</button>
 </body>
 </html>

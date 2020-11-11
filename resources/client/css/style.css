@@ -1,75 +1,38 @@
-input{
-    border-radius: 10px;
-    background: lightgrey;
-    border: 1px solid black;
-    padding: 10px;
-    width: 300px;
-    height: 10px;
-    z-index: 2;
-    display: block;
-    margin: auto;
-}
 body{
     background-color: gainsboro;
 }
 h1{
     font-family: "Courier New";
     color: #F08080;
-    text-align: center;
+    text-align: left;
     font-size: 50px;
 }
-button.loginbutton{
-    text-align: center;
-    font-family: "Courier New";
-    border-radius: 5px;
-    background: lightgrey;
-    border: 1px solid black;
-    padding: 10px;
-    width: 75px;
-    height: auto;
-    display: block;
-    margin: auto;
-}
-button.createbutton{
-    text-align: center;
-    background-color: white;
-    font-family: "Courier New";
-    border: none;
-    display: block;
-    margin-left: auto;
-}
-button.signupbutton{
-    text-align: center;
-    background-color: white;
-    font-family: "Courier New";
-    border: none;
-    display: inline-block;
-    margin-right: auto;
-}
-#loginbox{
-    border-radius: 25px;
-    background: white;
-    padding: 5px;
-    width: 400px;
-    height: 350px;
-    z-index: 1;
-    margin: auto;
-}
-#loginboxline{
+#headerline{
     height: 2px;
     color: black;
     background-color: black;
 }
-h2{
+button.logoutbutton{
     font-family: "Courier New";
     color: black;
-    text-align: center;
-    line-height: 20px;
+    background-color: gainsboro;
+    border: none;
+    position: fixed;
+    top: 60px;
+    right: 5px;
+    font-size: medium;
 }
-p{
+#headerbox{
+    height: 60px;
+    background-color: #fac8c8;
+}
+button.usernamebutton{
     font-family: "Courier New";
     color: black;
-    text-align: left;
-    padding-left: 50px;
-
+    background-color: gainsboro;
+    border: none;
+    position: fixed;
+    top: 35px;
+    right: 5px;
+    font-size: medium;
 }
