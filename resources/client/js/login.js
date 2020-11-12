@@ -21,13 +21,13 @@ function UsersLogin() {
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
         } else {
-            Cookies.set("Tokens", response.Tokens);
-            Cookies.set("Username", response.UserName);
+            Cookies.set("Token", response.Token);
+            Cookies.set("Username", response.Username);
             window.open("home.html", "_self");       //open index.html in same tab
         }
     });
 }
-function logout() {
+function UsersLogout() {
     debugger;
     console.log("Invoked logout");
     let url = "/users/logout";
@@ -38,11 +38,19 @@ function logout() {
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
         } else {
-            Cookies.remove("Tokens", response.Tokens);    //UserName and Token are removed
+            Cookies.remove("Token", response.Token);    //UserName and Token are removed
             Cookies.remove("Username", response.Username);
-            window.open("index.html", "_self");       //open index.html in same tab
+            window.open("login.html", "_self");       //open index.html in same tab
         }
     });
+}
+
+function SetUsername() {
+    Cookies.set("username",username);
+}
+function DisplayUsername(){
+    let username = Cookies.get("username");
+    document.getElementById("usernamedisplay").innerHTML=username;
 }
 
 function getUsersList() {

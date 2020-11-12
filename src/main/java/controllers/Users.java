@@ -118,14 +118,14 @@ public class Users{
             if (loginResults.next() == true) {
                 String correctPassword = loginResults.getString(1);
                 if (Password.equals(correctPassword)) {
-                    String Tokens = UUID.randomUUID().toString();
-                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Tokens = ? WHERE Username = ?");
-                    ps2.setString(1, Tokens);
+                    String Token = UUID.randomUUID().toString();
+                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE Username = ?");
+                    ps2.setString(1, Token);
                     ps2.setString(2, Username);
                     ps2.executeUpdate();
                     JSONObject userDetails = new JSONObject();
                     userDetails.put("Username", Username);
-                    userDetails.put("Tokens", Tokens);
+                    userDetails.put("Token", Token);
                     return userDetails.toString();
                 } else {
                     return "{\"Error\": \"Incorrect password!\"}";
