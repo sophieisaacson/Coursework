@@ -45,15 +45,16 @@ function UsersLogout() {
     });
 }
 
-function SetUsername() {
+/*function SetUsername() {
     Cookies.set("username",username);
 }
 function DisplayUsername(){
     let username = Cookies.get("username");
-    document.getElementById("usernamedisplay").innerHTML=username;
-}
+    var span = document.getElementById("usernamedisplay");
+    span.innerHTML="Welcome "+username;
+}*/
 
-function getUsersList() {
+/*function getUsersList() {
     debugger;
     console.log("Invoked getUsersList()");     //console.log your BFF for debugging client side - also use debugger statement
     const url = "/users/list/";    		// API method on web server will be in Users class, method list
@@ -68,7 +69,7 @@ function getUsersList() {
             formatUsersList(response);          //this function will create an HTML table of the data (as per previous lesson)
         }
     });
-}
+}*/
 
 function formatUsersList(myJSONArray){
     let dataHTML = "";

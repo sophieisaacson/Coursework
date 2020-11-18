@@ -7,6 +7,12 @@ h1{
     text-align: left;
     font-size: 50px;
 }
+h2{
+    font-family: "Courier New";
+    color: black;
+    text-align: center;
+    line-height: 20px;
+}
 #headerline{
     height: 2px;
     color: black;
@@ -22,10 +28,6 @@ button.logoutbutton{
     right: 5px;
     font-size: medium;
 }
-#headerbox{
-    height: 60px;
-    background-color: #fac8c8;
-}
 button.usernamebutton{
     font-family: "Courier New";
     color: black;
@@ -35,4 +37,31 @@ button.usernamebutton{
     top: 35px;
     right: 5px;
     font-size: medium;
+}
+button.headerbutton{
+    background-color: transparent;
+    background-position: 0px 0px;
+    border: none;
+    width: 60px;
+    height: 60px;
+}
+[class^="icon-"], [class*=" icon-"] {
+    height: 55px;
+    width: 55px;
+    display: inline-block;
+    fill: currentColor;
+    background-color: transparent;
+}
+.icon-bar {
+    width: 100%;
+    height: auto;
+    background-color: #fac8c8;
+    overflow: auto;
+    border: 1px solid black;
+}
+.icon-bar a {
+    float: left;
+    text-align: center;
+    width: 20%;
+    transition: all 0.3s ease;
 }

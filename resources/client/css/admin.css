@@ -1,0 +1,64 @@
+#adminbox{
+    border-radius: 50px;
+    background: white;
+    padding: 5px;
+    width: 95%;
+    height: 100%;
+    z-index: 1;
+    margin: auto;
+    border: 1px solid black;
+}
+#adminline{
+    height: 1px;
+    color: black;
+    background-color: black;
+}
+label{
+    border-radius: 10px;
+    background: gainsboro;
+    border: 1px solid black;
+    padding: 10px;
+    width: auto;
+    height: 10px;
+    font-family: "Courier New";
+}
+.emaillbl{
+    grid-area: a;
+}
+.usernamelbl{
+    grid-area: c;
+}
+.passwordlbl{
+    grid-area: e;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    grid-auto-rows: 100px;
+    grid-template-areas:
+            "a a a a b b b b"
+            "c c c c d d d d"
+            "e e e e f f f f"
+            "g g g g g g g g"
+            "g g g g g g g g"
+            "g g g g g g g g";
+    align-items: start;
+}
+button{
+    font-family: "Courier New";
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+    text-align: right;
+}
+.emailbtn{
+    grid-area: b;
+}
+.usernamebtn{
+    grid-area: d;
+}
+.passwordbtn{
+    grid-area: f;
+}

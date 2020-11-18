@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Organistic</title>
-    <script src="/client/js/login.js"></script>
+    <script src="/client/js/user.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
+    <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
 </head>
 <body onload="SetUsername">
     <h1>Organistic</h1>
     <div id="headerline"></div>
-    <button onload="DisplayUsername" class="usernamebutton" id="usernamebutton" onclick=window.open("admin.html","_self")>Username</button>
+    <button  class="usernamebutton" id="usernamebutton" onclick=window.open("admin.html","_self")>
+        Logged in as:
+        <span id="displayUser"></span>
+    </button>
     <button class=logoutbutton onclick='UsersLogout();'>LOGOUT</button>
-    <button class=todobutton onclick=window.open("todo.html","_self")>To Do List</button>
-    <button class=dailybutton onclick=window.open("daily.html","_self")>Daily Calendar</button>
-    <button class=weeklybutton onclick=window.open("weekly.html","_self")>Weekly Calendar</button>
-    <button class=monthlybutton onclick=window.open("monthly.html","_self")>Monthly Calendar</button>
+    <div class="grid">
+        <button class="todobutton" onclick=window.open("todo.html","_self")>
+            To Do List
+            <br>
+            <svg class="icon-todo"><use xlink:href="#icon-todo"></use></svg>
+        </button>
+        <button class="dailybutton" onclick=window.open("daily.html","_self")>
+            Daily Calendar
+            <br>
+            <svg class="icon-daily"><use xlink:href="#icon-daily"></use></svg>
+        </button>
+        <button class="weeklybutton" onclick=window.open("weekly.html","_self")>
+            Weekly Calendar
+            <br>
+            <svg class="icon-weekly"><use xlink:href="#icon-weekly"></use></svg>
+        </button>
+        <button class="monthlybutton" onclick=window.open("monthly.html","_self")>
+            Monthly Calendar
+            <br>
+            <svg class="icon-monthly"><use xlink:href="#icon-monthly"></use></svg>
+        </button>
+    </div>
 </body>
 </html>

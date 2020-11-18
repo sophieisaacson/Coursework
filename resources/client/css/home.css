@@ -8,12 +8,11 @@ button.todobutton{
     text-align: center;
     font-size: 30px;
     border-radius: 25px;
-    height: 200px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     border-color: black;
-    position: fixed;
-    left: 100px;
-    top: 200px;
+    grid-area: a;
+
 }
 button.dailybutton{
     font-family: "Courier New";
@@ -22,12 +21,10 @@ button.dailybutton{
     text-align: center;
     font-size: 30px;
     border-radius: 25px;
-    height: 200px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     border-color: black;
-    position: fixed;
-    right: 100px;
-    top: 200px;
+    grid-area: b;
 }
 button.weeklybutton{
     font-family: "Courier New";
@@ -36,12 +33,10 @@ button.weeklybutton{
     text-align: center;
     font-size: 30px;
     border-radius: 25px;
-    height: 200px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     border-color: black;
-    position: fixed;
-    left: 100px;
-    bottom: 50px;
+    grid-area: c;
 }
 button.monthlybutton{
     font-family: "Courier New";
@@ -50,10 +45,29 @@ button.monthlybutton{
     text-align: center;
     font-size: 30px;
     border-radius: 25px;
-    height: 200px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     border-color: black;
-    position: fixed;
-    right: 100px;
-    bottom: 50px;
+    grid-area: d;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    grid-auto-rows: 100px;
+    grid-template-areas:
+            "header header header header header header header header"
+            "a a a a b b b b"
+            "a a a a b b b b"
+            "c c c c d d d d"
+            "c c c c d d d d";
+    align-items: start;
+    gap: 10px;
+}
+[class^="icon-"], [class*=" icon-"] {
+    height: 50%;
+    width: 50%;
+    display: inline-block;
+    fill: currentColor;
+    background-color: transparent;
 }

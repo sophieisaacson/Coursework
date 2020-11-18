@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <title>Weekly Calendar</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="/client/js/user.js"></script>
+    <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
 </head>
 <body>
     <h1>Organistic</h1>
-    <div id="headerline"></div>
     <button class="usernamebutton" onclick=window.open("admin.html","_self")>Username</button>
     <button class=logoutbutton onclick='UsersLogout();'>LOGOUT</button>
-    <div id="headerbox"></div>
-    <div id="headerline"></div>
+    <div class="icon-bar">
+        <a href="#"><button class="headerbutton" onclick=window.open("todo.html","_self")>
+            <svg class="icon-todo"><use xlink:href="#icon-todo"></use></svg>
+        </button></a>
+        <a href="#"><button class="headerbutton" onclick=window.open("daily.html","_self")>
+            <svg class="icon-daily"><use xlink:href="#icon-daily"></use></svg>
+        </button></a>
+        <a href="#"><button class="headerbutton" onclick=window.open("weekly.html","_self")>
+            <svg class="icon-weekly"><use xlink:href="#icon-weekly"></use></svg>
+        </button></a>
+        <a href="#"><button class="headerbutton" onclick=window.open("monthly.html","_self")>
+            <svg class="icon-monthly"><use xlink:href="#icon-monthly"></use></svg>
+        </button></a>
+        <a href="#"><button class="headerbutton" >
+            <svg class="icon-add"><use xlink:href="#icon-add"></use></svg>
+        </button></a>
+    </div>
 </body>
 </html>
