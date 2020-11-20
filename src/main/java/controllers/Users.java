@@ -5,6 +5,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
 
+import javax.validation.constraints.Email;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
@@ -16,18 +17,18 @@ import java.util.UUID;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class Users{
-    @GET
+    /*@GET
     @Path("list")
-    public String UsersList() {
+    public String UsersList(@CookieParam("Username") String Username) {
         System.out.println("Invoked Users.UsersList()");
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, UserName FROM Users");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Email  FROM Users WHERE Username = ?");
             ResultSet results = ps.executeQuery();
             while (results.next()==true) {
                 JSONObject row = new JSONObject();
-                row.put("UserID", results.getInt(1));
-                row.put("Username", results.getString(2));
+                row.put("Username", username);
+                row.put("Email", results.getString(1));
                 response.add(row);
             }
             return response.toString();
@@ -35,20 +36,21 @@ public class Users{
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items. Please see server console for more information.\"}";
         }
-    }
+    }*/
     @GET
     @Path("get/{Username}")
-    public String GetUser(@PathParam("Username")String Username) {
+    public String GetUserDetails(@PathParam("Username")String Username) {
         System.out.println("Invoked Users.GetUser() with Username " + Username);
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT Password FROM Users WHERE Username = ?");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Password, Email FROM Users WHERE Username = ?");
             ps.setString(1, Username);
             ResultSet results = ps.executeQuery();
             JSONObject row = new JSONObject();
             if (results.next()==true) {
                 row.put("Username", Username);
                 row.put("Password", results.getString(1));
+                row.put("Email", results.getString(2));
                 response.add(row);
             }
             return response.toString();
@@ -112,11 +114,12 @@ public class Users{
     public String UsersLogin(@FormDataParam("Username") String Username, @FormDataParam("Password") String Password) {
         System.out.println("Invoked loginUser() on path users/login");
         try {
-            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password FROM Users WHERE Username = ?");
+            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password, Email FROM Users WHERE Username = ?");
             ps1.setString(1, Username);
             ResultSet loginResults = ps1.executeQuery();
             if (loginResults.next() == true) {
                 String correctPassword = loginResults.getString(1);
+                String Email = loginResults.getString(2);
                 if (Password.equals(correctPassword)) {
                     String Token = UUID.randomUUID().toString();
                     PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE Username = ?");
@@ -126,6 +129,7 @@ public class Users{
                     JSONObject userDetails = new JSONObject();
                     userDetails.put("Username", Username);
                     userDetails.put("Token", Token);
+                    userDetails.put("Email", Email);
                     return userDetails.toString();
                 } else {
                     return "{\"Error\": \"Incorrect password!\"}";

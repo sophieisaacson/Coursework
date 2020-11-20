@@ -5,13 +5,13 @@
     <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/admin.css">
-    <script src="/client/js/user.js"></script>
+    <script src="/client/js/admin.js"></script>
     <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
 </head>
-<body>
+<body onload="displayUserInfo()">
     <h1>Organistic</h1>
-    <button class="usernamebutton" onclick=window.open("admin.html","_self")>Username</button>
+    <button class="usernamebutton" onclick=window.open("admin.html","_self")><span id="usernamedisplay"></span></button>
     <button class=logoutbutton onclick='UsersLogout();'>LOGOUT</button>
     <div class="icon-bar">
         <a href="#"><button class="headerbutton" onclick=window.open("todo.html","_self")>
@@ -34,14 +34,13 @@
         <h2>Account</h2>
         <div id="adminline"></div>
         <div class="grid">
-        <label for="email" class="emaillbl">Email</label>
+        <label for="email" class="emaillbl" id="emaillbl">Email</label>
             <button class="emailbtn">Change Email</button>
-        <label for="username" class="usernamelbl">Username</label>
+        <label for="username" class="usernamelbl" id = "usernamelbl">Username</label>
             <button class="usernamebtn">Change Username</button>
-        <label for="password" class="passwordlbl">Password</label>
+        <label for="password" class="passwordlbl">********</label>
             <button class="passwordbtn">Change Password</button>
         </div>
-
     </div>
 </body>
 </html>

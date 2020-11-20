@@ -4,7 +4,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
 
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +14,7 @@ import java.sql.ResultSet;
 @Path("usersdates/")
 
 public class Calendar {
+
     @GET
     @Path("list")
     public String UsersDatesList() {
@@ -21,7 +24,7 @@ public class Calendar {
             PreparedStatement ps = Main.db.prepareStatement("SELECT UsersDates.Date, UsersDates.Name\n" +
                     "FROM UsersDates\n" +
                     "JOIN Users ON Users.UserID = UsersDates.UserID\n" +
-                    "WHERE Users.Username = ?");
+                    "WHERE Users.Token = ?");
             ResultSet results = ps.executeQuery();
             while (results.next()==true) {
                 JSONObject row = new JSONObject();

@@ -8,9 +8,9 @@
     <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
 </head>
-<body>
+<body onload="DisplayUsername()">
     <h1>Organistic</h1>
-    <button class="usernamebutton" onclick=window.open("admin.html","_self")>Username</button>
+    <button class="usernamebutton" onclick=window.open("admin.html","_self")><span id="usernamedisplay"></span></button>
     <button class=logoutbutton onclick='UsersLogout();'>LOGOUT</button>
     <div class="icon-bar">
         <a href="#"><button class="headerbutton" onclick=window.open("todo.html","_self")>

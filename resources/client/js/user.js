@@ -1,4 +1,9 @@
 "use strict";
+function DisplayUsername(){
+    var username = Cookies.get("Username");
+    var span = document.getElementById("usernamedisplay");
+    span.innerHTML=username;
+}
 
 var modal = document.getElementById('signup');
 window.onclick = function(event) {
@@ -7,23 +12,23 @@ window.onclick = function(event) {
     }
 }
 function UsersLogin() {
-    //debugger;
+    debugger;
     console.log("Invoked UsersLogin() ");
     let url = "/users/login";
     let formData = new FormData(document.getElementById('LoginForm'));
-
     fetch(url, {
         method: "POST",
         body: formData,
     }).then(response => {
-        return response.json();                 //now return that promise to JSON
+        return response.json();
     }).then(response => {
         if (response.hasOwnProperty("Error")) {
-            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+            alert(JSON.stringify(response));
         } else {
             Cookies.set("Token", response.Token);
             Cookies.set("Username", response.Username);
-            window.open("home.html", "_self");       //open index.html in same tab
+            Cookies.set("Email", response.Email);
+            window.open("home.html", "_self");
         }
     });
 }
@@ -31,7 +36,8 @@ function UsersLogout() {
     debugger;
     console.log("Invoked logout");
     let url = "/users/logout";
-    fetch(url, {method: "POST"
+    fetch(url, {
+        method: "POST"
     }).then(response => {
         return response.json();                 //now return that promise to JSON
     }).then(response => {
@@ -45,14 +51,7 @@ function UsersLogout() {
     });
 }
 
-/*function SetUsername() {
-    Cookies.set("username",username);
-}
-function DisplayUsername(){
-    let username = Cookies.get("username");
-    var span = document.getElementById("usernamedisplay");
-    span.innerHTML="Welcome "+username;
-}*/
+
 
 /*function getUsersList() {
     debugger;
@@ -79,24 +78,6 @@ function formatUsersList(myJSONArray){
     document.getElementById("Users").innerHTML = dataHTML;
 }
 
-function getUser() {
-    console.log("Invoked getUser()");     //console.log your BFF for debugging client side
-    const Username = document.getElementById("Username").value;  //get the UserId from the HTML element with id=UserID
-    //debugger;				  //debugger statement to allow you to step through the code in console dev F12
-    const url = "/users/get/";       // API method on webserver
-    fetch(url + Username, {                // Username as a path parameter
-        method: "GET",
-    }).then(response => {
-        return response.json();                         //return response to JSON
-    }).then(response => {
-       if (response.hasOwnProperty("Error")) {         //checks if response from server has an "Error"
-            alert(JSON.stringify(response));            // if it does, convert JSON object to string and alert
-       } else {
-           document.getElementById("DisplayOneUser").innerHTML = response.Username + " " + response.Password;  //output data
-       }
-    });
-}
-
 function NewAccount() {
     console.log("Invoked AddUser()");
     const formData = new FormData(document.getElementById('InputUserDetails'));
@@ -114,3 +95,4 @@ function NewAccount() {
         }
     });
 }
+
