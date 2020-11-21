@@ -46,6 +46,7 @@ function UsersLogout() {
         } else {
             Cookies.remove("Token", response.Token);    //UserName and Token are removed
             Cookies.remove("Username", response.Username);
+            Cookies.remove("Email", response.Email);
             window.open("login.html", "_self");       //open index.html in same tab
         }
     });

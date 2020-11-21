@@ -147,11 +147,12 @@ public class Users{
     public static String logout(@CookieParam("Tokens") String Token){
         try{
             System.out.println("users/logout "+ Token);
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID FROM Users WHERE Token=?");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Email FROM Users WHERE Token=?");
             ps.setString(1, Token);
             ResultSet logoutResults = ps.executeQuery();
             if (logoutResults.next()){
                 int UserID = logoutResults.getInt(1);
+                String Email = logoutResults.getString(2);
                 //Set the token to null to indicate that the user is not logged in
                 PreparedStatement ps1 = Main.db.prepareStatement("UPDATE Users SET Token = NULL WHERE UserID = ?");
                 ps1.setInt(1, UserID);
