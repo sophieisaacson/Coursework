@@ -13,6 +13,18 @@
     <script src="/client/js/user.js"></script>
     <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'resourceTimelineWeek'
+            });
+            calendar.render();
+        });
+    </script>
+
 </head>
 <body onload="DisplayUsername()">
     <h1>Organistic</h1>
@@ -35,7 +47,6 @@
             <svg class="icon-add"><use xlink:href="#icon-add"></use></svg>
         </button></a>
     </div>
-<div onload="getUsersDatesList()"></div>
 </body>
 </html>
 
