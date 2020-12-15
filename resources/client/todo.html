@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>To Do List</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
     <script src="/client/js/user.js"></script>
     <script src="/client/js/todo.js"></script>
     <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
@@ -26,8 +27,23 @@
         <a href="#"><button class="headerbutton" onclick=window.open("monthly.html","_self")>
             <svg class="icon-monthly"><use xlink:href="#icon-monthly"></use></svg>
         </button></a>
-        <a href="#"><button class="headerbutton" >
+        <a href="#"><button class="headerbutton" onclick="document.getElementById('FastPlanner').style.display='block'" >
             <svg class="icon-add"><use xlink:href="#icon-add"></use></svg>
+            <div id="FastPlanner" class="modal">
+                <form class="modal-content" action=home.html>
+                    <div class="container">
+                        <h2>Fast Planner</h2>
+                        <p>Please fill in this form to create a fast note.</p>
+                        <hr>
+                        <label for="note">Note</label>
+                        <input class=modalinputs type="text" name="note" required>
+                        <div class="modalbuttons">
+                            <button class="cancelbutton" onclick="document.getElementById('FastPlanner').style.display='none'">Cancel</button>
+                            <button class="submitbutton" onclick='FastPlanner();'>Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </button></a>
     </div>
     <button onclick="getUsersToDosList()">ToDo List</button>
