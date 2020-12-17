@@ -14,22 +14,22 @@ import java.sql.ResultSet;
 public class ToDo {
     @GET
     @Path("list")
-    public String UsersToDoList(@CookieParam("Tokens") String Token) {
+    public String UsersToDoList(@CookieParam("Token") String Token) {
         System.out.println("Invoked Users.UsersToDosList()");
-        System.out.println("users/logout "+ Token);
         JSONArray response = new JSONArray();
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT ToDo, ToDoPriority, ToDoDate, ToDoComplete \n" +
                     "FROM UsersToDos \n" +
                     "JOIN Users ON Users.UserID = UsersToDos.UserID \n" +
                     "WHERE Token = ?");
+            ps.setString(1, Token);
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next() == true) {
                 JSONObject row = new JSONObject();
                 row.put("ToDo", results.getString(1));
-                row.put("ToDoPriority", results.getString(2));
-                row.put("ToDoDate", results.getString(3));
-                row.put("ToDoComplete", results.getString(4));
+                row.put("ToDoPriority", results.getInt(2));
+                row.put("ToDoDate", results.getDate(3));
+                row.put("ToDoComplete", results.getBoolean(4));
                 response.add(row);
             }
             return response.toString();
