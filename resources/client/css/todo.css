@@ -1,0 +1,11 @@
+table{
+    font-family: "Courier New";
+    text-align: center;
+    width:100%;
+}
+tr, td{
+    background-color: #cecdcd;
+}
+th{
+    background-color: #a7a7a7;
+}

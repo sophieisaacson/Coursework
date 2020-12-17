@@ -114,12 +114,13 @@ public class Users{
     public String UsersLogin(@FormDataParam("Username") String Username, @FormDataParam("Password") String Password) {
         System.out.println("Invoked loginUser() on path users/login");
         try {
-            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password, Email FROM Users WHERE Username = ?");
+            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password, Email, UserID FROM Users WHERE Username = ?");
             ps1.setString(1, Username);
             ResultSet loginResults = ps1.executeQuery();
             if (loginResults.next() == true) {
                 String correctPassword = loginResults.getString(1);
                 String Email = loginResults.getString(2);
+                Integer UserID = loginResults.getInt(3);
                 if (Password.equals(correctPassword)) {
                     String Token = UUID.randomUUID().toString();
                     PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE Username = ?");
@@ -130,6 +131,7 @@ public class Users{
                     userDetails.put("Username", Username);
                     userDetails.put("Token", Token);
                     userDetails.put("Email", Email);
+                    userDetails.put("UserID", UserID);
                     return userDetails.toString();
                 } else {
                     return "{\"Error\": \"Incorrect password!\"}";

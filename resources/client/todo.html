@@ -5,12 +5,13 @@
     <title>To Do List</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/todo.css">
     <script src="/client/js/user.js"></script>
     <script src="/client/js/todo.js"></script>
     <script src="https://file.myfontastic.com/JCFNo2yupLgbYES2bfTq5o/icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
 </head>
-<body onload="DisplayUsername()">
+<body onload="getUsersToDosList()">
     <h1>Organistic</h1>
     <button class="usernamebutton" onclick=window.open("admin.html","_self")><span id="usernamedisplay"></span></button>
     <button class=logoutbutton onclick='UsersLogout();'>LOGOUT</button>
@@ -29,24 +30,19 @@
         </button></a>
         <a href="#"><button class="headerbutton" onclick="document.getElementById('FastPlanner').style.display='block'" >
             <svg class="icon-add"><use xlink:href="#icon-add"></use></svg>
-            <div id="FastPlanner" class="modal">
-                <form class="modal-content" action=home.html>
-                    <div class="container">
-                        <h2>Fast Planner</h2>
-                        <p>Please fill in this form to create a fast note.</p>
-                        <hr>
-                        <label for="note">Note</label>
-                        <input class=modalinputs type="text" name="note" required>
-                        <div class="modalbuttons">
-                            <button class="cancelbutton" onclick="document.getElementById('FastPlanner').style.display='none'">Cancel</button>
-                            <button class="submitbutton" onclick='FastPlanner();'>Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </button></a>
     </div>
-    <button onclick="getUsersToDosList()">ToDo List</button>
+    <p>1 is high priority, 3 is low priority</p>
     <table id = UsersToDosTable></table>
+
+    <form id="ToDoForm">
+        <label for="ToDo">Name</label>
+        <input type="text" name="ToDo" id="ToDo" required>
+        <label for="ToDoPriority">Priority</label>
+        <input type="number" name="ToDoPriority" id="ToDoPriority" min="1" max="3">
+        <label for="ToDoDate">Date</label>
+        <input type="date" name="ToDoDate" id="ToDoDate" required>
+        <button class="loginbutton" onclick='addToDo();'>Add to do</button>
+    </form>
 </body>
 </html>

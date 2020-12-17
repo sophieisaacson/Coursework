@@ -28,6 +28,7 @@ function UsersLogin() {
             Cookies.set("Token", response.Token);
             Cookies.set("Username", response.Username);
             Cookies.set("Email", response.Email);
+            Cookies.set("UserID", response.UserID);
             window.open("home.html", "_self");
         }
     });
@@ -47,6 +48,7 @@ function UsersLogout() {
             Cookies.remove("Token", response.Token);    //UserName and Token are removed
             Cookies.remove("Username", response.Username);
             Cookies.remove("Email", response.Email);
+            Cookies.remove("UserID", response.UserID);
             window.open("login.html", "_self");       //open index.html in same tab
         }
     });
